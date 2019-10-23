@@ -22,26 +22,25 @@ struct  Cmd_writer
     void increment_obj_counter(string data){
         if(open_for_write){
             obj_counter++;
-            cmd_buff.push_back(data);
+//            cmd_buff.push_back(data);
         } else {
             obj_counter=1;
             open_for_write=true;
             cmd_buff.clear();
-            cmd_buff.push_back(data);
+//            cmd_buff.push_back(data);
         }
      }
     void decrement_obj_counter(string data){
          obj_counter--;
-         if(obj_counter)
-             cmd_buff.push_back(data);
-         else {
+         if(!obj_counter){
              obj_counter=3;
-             cmd_buff.push_back(data);
+             open_for_write=false;
              for(const string& str : cmd_buff){
-                 std::cout<<str<<std::endl;
+                 std::cout<<str<<" ";
              }
              cmd_buff.clear();
          }
+             cmd_buff.push_back(data);
      }
 };
 int main()
