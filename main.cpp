@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include "logger.h"
 using namespace std;
 
 struct  Cmd_writer
@@ -9,8 +10,10 @@ struct  Cmd_writer
     bool open_for_write=false;
     int obj_counter;
     vector<string> cmd_buff;
+    logger log;
      Cmd_writer(int count) {
          obj_counter=count;
+         log.init("");
      }
     void increment_obj_counter(string data){
         if(open_for_write){
@@ -32,10 +35,12 @@ struct  Cmd_writer
              open_for_write=false;
              if (strcmp(data.c_str(),"}")!=0)
                 cmd_buff.push_back(data);
+             std::string bulk_str="bulk: ";
              for(const string& str : cmd_buff){
-                 std::cout<<str<<" ";
+                 bulk_str=bulk_str+str+" ";
              }
-             std::cout<<std::endl;
+             std::cout<<bulk_str<<std::endl;
+             log.info(bulk_str);
              cmd_buff.clear();
          }
      }
