@@ -8,11 +8,18 @@ endif()
 
 FILE(GLOB_RECURSE LibFiles "*.h")
 
-
-
 add_custom_target(headers SOURCES ${LibFiles})
 aux_source_directory(. SRC_LIST)
 add_executable(${PROJECT_NAME} ${SRC_LIST})
+
+set_target_properties(bulk PROPERTIES
+    CXX_STANDARD 14
+    CXX_STANDARD_REQUIRED ON
+)
+
+target_include_directories(bulk
+    PRIVATE "${CMAKE_BINARY_DIR}"
+)
 
 install(TARGETS bulk RUNTIME DESTINATION bin)
 
