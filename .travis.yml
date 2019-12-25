@@ -25,7 +25,5 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script:
-  - curl -T ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -umshestukhin:$BINTRAY_API_KEY "https://api.bintray.com/content/2501/02.homework/ip_filter_1/$TRAVIS_BUILD_NUMBER/ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  script: - curl -T bulk-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -umshestukhin:$BINTRAY_API_KEY "https://api.bintray.com/content/2501/07.homework/bulk/$TRAVIS_BUILD_NUMBER/bulk-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
 
-curl -T bulk-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -umshestukhin:$BINTRAY_API_KEY "https://api.bintray.com/content/2501/07.homework/bulk/$TRAVIS_BUILD_NUMBER/bulk-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
