@@ -36,8 +36,10 @@ struct  Cmd_writer
              if (strcmp(data.c_str(),"}")!=0)
                 cmd_buff.push_back(data);
              std::string bulk_str="bulk: ";
-             for(const string& str : cmd_buff){
-                 bulk_str=bulk_str+str+" ";
+             for (auto str = cmd_buff.begin(); str != cmd_buff.end(); ++str) {
+                 bulk_str=bulk_str+*str;
+                 if(str!=cmd_buff.end()-1)
+                     bulk_str+=", ";
              }
              std::cout<<bulk_str<<std::endl;
              log.info(bulk_str);

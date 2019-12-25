@@ -8,6 +8,7 @@ public:
     logger();
     std::string currentDateTime(std::string format);
     std::string path;
+    std::string file_name;
     void init(std::string path_log);
     void info(std::string s);
     void warning(std::string s);
